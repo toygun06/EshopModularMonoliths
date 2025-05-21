@@ -4,12 +4,10 @@ using Shared.Pagination;
 
 namespace Catalog.Products.Features.GetProducts;
 
-public record GetProductsQuery(PaginationRequest PaginationRequest)
-    : IQuery<GetProductsResult>;
+public record GetProductsQuery(PaginationRequest PaginationRequest) : IQuery<GetProductsResult>;
 public record GetProductsResult(PaginatedResult<ProductDto> Products);
 
-internal class GetProductsHandler(CatalogDbContext dbContext)
-    : IQueryHandler<GetProductsQuery, GetProductsResult>
+internal class GetProductsHandler(CatalogDbContext dbContext) : IQueryHandler<GetProductsQuery, GetProductsResult>
 {
     public async Task<GetProductsResult> Handle(GetProductsQuery query, CancellationToken cancellationToken)
     {

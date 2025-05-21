@@ -1,8 +1,4 @@
-﻿using Carter;
-using Catalog.Contracts.Products.Dtos;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
+﻿using Catalog.Contracts.Products.Dtos;
 
 namespace Catalog.Products.Features.CreateProduct;
 
