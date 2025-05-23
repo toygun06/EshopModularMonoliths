@@ -1,6 +1,4 @@
 ﻿using Catalog.Contracts.Products.Dtos;
-using Catalog.Products.Exceptions;
-using FluentValidation;
 using Shared.Contracts.CQRS;
 
 namespace Catalog.Products.Features.UpdateProduct;

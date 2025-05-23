@@ -1,11 +1,9 @@
 ﻿using Catalog.Contracts.Products.Dtos;
-using FluentValidation;
 using Shared.Contracts.CQRS;
 
 namespace Catalog.Products.Features.CreateProduct;
 
-public record CreateProductCommand(ProductDto Product)
-    : ICommand<CreateProductResult>;
+public record CreateProductCommand(ProductDto Product) : ICommand<CreateProductResult>;
 public record CreateProductResult(Guid Id);
 public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
 {
@@ -18,8 +16,7 @@ public class CreateProductCommandValidator : AbstractValidator<CreateProductComm
     }
 }
 
-internal class CreateProductHandler
-    (CatalogDbContext dbContext) : ICommandHandler<CreateProductCommand, CreateProductResult>
+internal class CreateProductHandler(CatalogDbContext dbContext) : ICommandHandler<CreateProductCommand, CreateProductResult>
 {
     public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
     {
