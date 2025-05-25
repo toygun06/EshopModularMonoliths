@@ -22,16 +22,16 @@ public static class BasketModule
         //services.Decorate<IBasketRepository, CachedBasketRepository>();
 
         // 3. Data - Infrastructure services
-        //var connectionString = configuration.GetConnectionString("Database");
+        var connectionString = configuration.GetConnectionString("Database");
 
-        //services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-        //services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
+        services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
-        //services.AddDbContext<BasketDbContext>((sp, options) =>
-        //{
-        //    options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
-        //    options.UseNpgsql(connectionString);
-        //});
+        services.AddDbContext<BasketDbContext>((sp, options) =>
+        {
+            options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
+            options.UseNpgsql(connectionString);
+        });
 
         //services.AddHostedService<OutboxProcessor>();
 
@@ -46,7 +46,7 @@ public static class BasketModule
         // 2. Use Application Use Case services
 
         // 3. Use Data - Infrastructure services
-        //app.UseMigration<BasketDbContext>();
+        app.UseMigration<BasketDbContext>();
 
         return app;
     }
