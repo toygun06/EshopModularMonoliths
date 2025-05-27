@@ -18,7 +18,7 @@ public static class BasketModule
         // 1. Api Endpoint services
 
         // 2. Application Use Case services
-        //services.AddScoped<IBasketRepository, BasketRepository>();
+        services.AddScoped<IBasketRepository, BasketRepository>();
         //services.Decorate<IBasketRepository, CachedBasketRepository>();
 
         // 3. Data - Infrastructure services

@@ -7,18 +7,15 @@ builder.Host.UseSerilog((context, config) =>
 // Add services to the container.
 
 //common services: carter, mediatr, fluentvalidation, masstransit
-//var catalogAssembly = typeof(CatalogModule).Assembly;
-//var basketAssembly = typeof(BasketModule).Assembly;
+var catalogAssembly = typeof(CatalogModule).Assembly;
+var basketAssembly = typeof(BasketModule).Assembly;
 //var orderingAssembly = typeof(OrderingModule).Assembly;
 
 builder.Services
-    .AddCarterWithAssemblies(typeof(CatalogModule).Assembly);
+    .AddCarterWithAssemblies(catalogAssembly, basketAssembly);
 
-//builder.Services
-//    .AddCarterWithAssemblies(catalogAssembly, basketAssembly, orderingAssembly);
-
-//builder.Services
-//    .AddMediatRWithAssemblies(catalogAssembly, basketAssembly, orderingAssembly);
+builder.Services
+    .AddMediatRWithAssemblies(catalogAssembly, basketAssembly);
 
 //builder.Services.AddStackExchangeRedisCache(options =>
 //{
