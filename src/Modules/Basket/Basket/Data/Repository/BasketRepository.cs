@@ -2,8 +2,7 @@
 using Basket.Basket.Exceptions;
 
 namespace Basket.Data.Repository;
-public class BasketRepository(BasketDbContext dbContext)
-    : IBasketRepository
+public class BasketRepository(BasketDbContext dbContext) : IBasketRepository
 {
     public async Task<ShoppingCart> GetBasket(string userName, bool asNoTracking = true, CancellationToken cancellationToken = default)
     {
