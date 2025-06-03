@@ -1,7 +1,6 @@
 ﻿namespace Basket.Basket.Features.UpdateItemPriceInBasket;
 
-public record UpdateItemPriceInBasketCommand(Guid ProductId, decimal Price)
-    : ICommand<UpdateItemPriceInBasketResult>;
+public record UpdateItemPriceInBasketCommand(Guid ProductId, decimal Price) : ICommand<UpdateItemPriceInBasketResult>;
 public record UpdateItemPriceInBasketResult(bool IsSuccess);
 public class UpdateItemPriceInBasketCommandValidator : AbstractValidator<UpdateItemPriceInBasketCommand>
 {
@@ -12,8 +11,7 @@ public class UpdateItemPriceInBasketCommandValidator : AbstractValidator<UpdateI
     }
 }
 
-internal class UpdateItemPriceInBasketHandler(BasketDbContext dbContext)
-    : ICommandHandler<UpdateItemPriceInBasketCommand, UpdateItemPriceInBasketResult>
+internal class UpdateItemPriceInBasketHandler(BasketDbContext dbContext) : ICommandHandler<UpdateItemPriceInBasketCommand, UpdateItemPriceInBasketResult>
 {
     public async Task<UpdateItemPriceInBasketResult> Handle(UpdateItemPriceInBasketCommand command, CancellationToken cancellationToken)
     {

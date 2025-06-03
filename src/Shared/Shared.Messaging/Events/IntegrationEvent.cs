@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Shared.Messaging.Events;
+﻿namespace Shared.Messaging.Events;
 public record IntegrationEvent
 {
     public Guid EventId => Guid.NewGuid();
