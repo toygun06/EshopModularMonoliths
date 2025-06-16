@@ -9,6 +9,7 @@ public static class MassTransitExtentions
     public static IServiceCollection AddMassTransitWithAssemblies(this IServiceCollection services, IConfiguration configuration, params Assembly[] assemblies)
     {
         services.AddMassTransit(config =>
+        
         {
             config.SetKebabCaseEndpointNameFormatter();
 
