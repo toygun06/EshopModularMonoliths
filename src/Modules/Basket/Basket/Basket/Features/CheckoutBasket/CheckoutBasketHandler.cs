@@ -1,4 +1,4 @@
-﻿//using Shared.Messaging.Events;
+﻿using Shared.Messaging.Events;
 using System.Text.Json;
 
 namespace Basket.Basket.Features.CheckoutBasket;
@@ -14,8 +14,7 @@ public class CheckoutBasketCommandValidator : AbstractValidator<CheckoutBasketCo
     }
 }
 
-internal class CheckoutBasketHandler(BasketDbContext dbContext)
-    : ICommandHandler<CheckoutBasketCommand, CheckoutBasketResult>
+internal class CheckoutBasketHandler(BasketDbContext dbContext) : ICommandHandler<CheckoutBasketCommand, CheckoutBasketResult>
 {
     public async Task<CheckoutBasketResult> Handle(CheckoutBasketCommand command, CancellationToken cancellationToken)
     {
@@ -40,19 +39,19 @@ internal class CheckoutBasketHandler(BasketDbContext dbContext)
             }
 
             // Set total price on basket checkout event message
-            //var eventMessage = command.BasketCheckout.Adapt<BasketCheckoutIntegrationEvent>();
-            //eventMessage.TotalPrice = basket.TotalPrice;
+            var eventMessage = command.BasketCheckout.Adapt<BasketCheckoutIntegrationEvent>();
+            eventMessage.TotalPrice = basket.TotalPrice;
 
-            // Write a message to the outbox
-            //var outboxMessage = new OutboxMessage
-            //{
-            //    Id = Guid.NewGuid(),
-            //    Type = typeof(BasketCheckoutIntegrationEvent).AssemblyQualifiedName!,
-            //    Content = JsonSerializer.Serialize(eventMessage),
-            //    OccuredOn = DateTime.UtcNow
-            //};
+            //Write a message to the outbox
+            var outboxMessage = new OutboxMessage
+            {
+                Id = Guid.NewGuid(),
+                Type = typeof(BasketCheckoutIntegrationEvent).AssemblyQualifiedName!,
+                Content = JsonSerializer.Serialize(eventMessage),
+                OccuredOn = DateTime.UtcNow
+            };
 
-            //dbContext.OutboxMessages.Add(outboxMessage);
+            dbContext.OutboxMessages.Add(outboxMessage);
 
             // Delete the basket
             dbContext.ShoppingCarts.Remove(basket);

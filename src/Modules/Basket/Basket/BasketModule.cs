@@ -1,4 +1,4 @@
-﻿//using Basket.Data.Processors;
+﻿using Basket.Data.Processors;
 //using Basket.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore.Diagnostics;
@@ -33,7 +33,7 @@ public static class BasketModule
             options.UseNpgsql(connectionString);
         });
 
-        //services.AddHostedService<OutboxProcessor>();
+        services.AddHostedService<OutboxProcessor>();
 
         return services;
     }

@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Basket.Data.Mgirations
+namespace Basket.Data.Migrations
 {
     [DbContext(typeof(BasketDbContext))]
     partial class BasketDbContextModelSnapshot : ModelSnapshot

@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Basket.Data.Mgirations
+namespace Basket.Data.Migrations
 {
     [DbContext(typeof(BasketDbContext))]
-    [Migration("20250525120131_InitialCreate")]
+    [Migration("20250616170116_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

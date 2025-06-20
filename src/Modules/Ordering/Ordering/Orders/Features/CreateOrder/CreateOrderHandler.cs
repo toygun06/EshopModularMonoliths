@@ -5,8 +5,7 @@ using Shared.Contracts.CQRS;
 
 namespace Ordering.Orders.Features.CreateOrder;
 
-public record CreateOrderCommand(OrderDto Order)
-    : ICommand<CreateOrderResult>;
+public record CreateOrderCommand(OrderDto Order) : ICommand<CreateOrderResult>;
 public record CreateOrderResult(Guid Id);
 public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
 {
@@ -16,8 +15,7 @@ public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
     }
 }
 
-internal class CreateOrderHandler(OrderingDbContext dbContext)
-    : ICommandHandler<CreateOrderCommand, CreateOrderResult>
+internal class CreateOrderHandler(OrderingDbContext dbContext) : ICommandHandler<CreateOrderCommand, CreateOrderResult>
 {
     public async Task<CreateOrderResult> Handle(CreateOrderCommand command, CancellationToken cancellationToken)
     {

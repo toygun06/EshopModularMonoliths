@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Basket.Data.Mgirations
+namespace Basket.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
